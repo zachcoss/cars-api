@@ -1,27 +1,28 @@
 const 
-    _ = require('lodash');
+    _ = require('lodash'),
+    axios = require('axios');
 
 module.exports = {
     validate: function(req, res) {
-
-        return payload
+        return {}
     },
     request: async function(payload) {
         try {
-
-            // Await Cars-Service
-
-            return payload
+            const cars = await axios.get(`${process.env.CARS_SERVICE_URL}/cars`)
+            return cars.data
         } catch(err) {
             throw new Error(err.message)
         }
     },
-    response: function(request, res) {
-
+    response: function(response, res) {
         return res.status(200).send(response)
     },
     error: function(err, res) {
         console.log('Cars List Cars error', err)
-        return res.status(400).send(err.message)
+        return res.status(400).send({
+            data: [],
+            error: true,
+            errorMessage: err.message,
+        })
     },
 }
