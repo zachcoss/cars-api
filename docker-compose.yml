@@ -1,0 +1,13 @@
+version: '3'
+services:
+  api:
+    build: .
+    ports: ['3000:3000']
+    environment:
+      PORT: 3000
+      CARS_SERVICE_URL: http://service:3001
+  service:
+    build: ../cars-service/.
+    ports: ['3001:3001']
+    environment:
+      PORT: 3001
