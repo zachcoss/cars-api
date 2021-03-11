@@ -1,0 +1,5 @@
+# Typically, the .env file should be ignored,
+# but is included in this case for testing purposes
+# .env
+node_modules
+.DS_Store
